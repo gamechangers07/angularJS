@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script   src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
+
+</head>
+<!--  object -->
+<body ng-init="customersObj=[
+ 							 {name:'John Smith',city:'Madison'},
+                             {name:'John Doe',city:'Sanford'},
+                             {name:'Jane Doe',city:'Chicago'}
+                            ]">
+<div ng-init ="names= ['John Smith','John Doe','Jane Doe']">
+Name: <br/>
+<input type="text" ng-model="name" /> {{ name }}
+<br />
+<B>Looping Array--</B>
+<ul>
+ <li ng-repeat="personName in names">{{personName}}</li>
+</ul>
+<B>Looping Objects--</B>
+<ul>
+ <li ng-repeat="cust in customersObj |filter:name| orderBy:'city'">{{cust.name | uppercase}}&nbsp;&nbsp;{{cust.city}}</li>
+</ul>
+</div>
+
+</body>
+</html>

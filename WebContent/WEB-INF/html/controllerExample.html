@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script   src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+
+<script type="text/javascript" >
+var demoApp = angular.module('demoApp',[]);
+// function SimpleController($scope) {
+
+// 	$scope.customers = [ 
+// 	                    {name : 'John Smith', city : 'Madison'}, 
+// 	                    {name : 'James Knight', city : 'Sanford'},
+// 	                    {name : 'Jane Doe', city : 'Chicago'	},
+// 	                    {name : 'Kil Bill',	city : 'Milwaukee'}
+// 	                  ];
+// }
+// demoApp.controller('SimpleController',SimpleController);
+// demoApp.controller('SimpleController',function ($scope) {
+// 	$scope.customers = [ 
+// 	                    {name : 'John Smith', city : 'Madison'}, 
+// 	                    {name : 'James Knight', city : 'Sanford'},
+// 	                    {name : 'Jane Doe', city : 'Chicago'	},
+// 	                    {name : 'Kil Bill',	city : 'Milwaukee'}
+// 	                  ];
+// });
+
+
+var controllers={};
+controllers.SimpleController =function ($scope) {
+	$scope.customers = [ 
+	                    {name : 'John Smith', city : 'Madison'}, 
+	                    {name : 'James Knight', city : 'Sanford'},
+	                    {name : 'Jane Doe', city : 'Chicago'	},
+	                    {name : 'Kil Bill',	city : 'Milwaukee'}
+	                  ];
+};
+demoApp.controller(controllers);
+</script>
+
+</head>
+<!--  object -->
+<body >
+	<div ng-app="demoApp" ng-controller="SimpleController">
+
+		Name: <br /> <input type="text" ng-model="name" /> {{ name }} <br />
+
+		<B>Looping Objects--</B>
+		<ul>
+			<li ng-repeat="cust in customers |filter:name| orderBy:'city'">{{cust.name | uppercase}}&nbsp;&nbsp;{{cust.city}}</li>
+		</ul>
+	</div>
+</body>
+</html>
